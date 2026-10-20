@@ -1,0 +1,100 @@
+# Origem: files.zip!/install-agents.sh
+
+#!/usr/bin/env bash
+# install-agents.sh — instala os subagentes (.md) no Claude Code
+#
+# Uso:
+#   ./install-agents.sh --global [pasta-com-os-.md]
+#   ./install-agents.sh --project [pasta-com-os-.md]
+#
+#   --global   instala em ~/.claude/agents (disponível em todos os projetos,
+#              nesta máquina, para sempre — não precisa repetir por projeto)
+#   --project  instala em ./.claude/agents (só no projeto atual; pode
+#              commitar essa pasta pra compartilhar com o time)
+#
+# Se a pasta com os .md não for informada, usa o diretório onde este
+# script está salvo. Se você baixou o zip (claude-code-agents.zip),
+# descompacte antes de rodar, ou passe o caminho do zip como argumento
+# extra e este script descompacta pra você.
+
+set -euo pipefail
+
+usage() {
+  echo "Uso: $0 [--global|--project] [pasta-ou-zip-com-os-.md]"
+  echo ""
+  echo "  --global   instala em ~/.claude/agents (todos os projetos desta máquina)"
+  echo "  --project  instala em ./.claude/agents (só o projeto atual, versionável)"
+  exit 1
+}
+
+SCOPE=""
+SRC=""
+
+for arg in "$@"; do
+  case "$arg" in
+    --global) SCOPE="global" ;;
+    --project) SCOPE="project" ;;
+    -h|--help) usage ;;
+    *) SRC="$arg" ;;
+  esac
+done
+
+if [[ -z "$SCOPE" ]]; then
+  echo "Erro: informe --global ou --project"
+  echo ""
+  usage
+fi
+
+if [[ -z "$SRC" ]]; then
+  SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
+
+if [[ "$SCOPE" == "global" ]]; then
+  DEST="$HOME/.claude/agents"
+else
+  DEST="$(pwd)/.claude/agents"
+fi
+
+mkdir -p "$DEST"
+
+# Se apontar para um .zip, descompacta num diretório temporário primeiro
+if [[ -f "$SRC" && "$SRC" == *.zip ]]; then
+  TMP_DIR="$(mktemp -d)"
+  unzip -oq "$SRC" -d "$TMP_DIR"
+  SRC="$TMP_DIR"
+fi
+
+shopt -s nullglob
+FILES=("$SRC"/*.md)
+if [[ ${#FILES[@]} -eq 0 ]]; then
+  echo "Nenhum arquivo .md encontrado em: $SRC"
+  exit 1
+fi
+
+echo "Instalando ${#FILES[@]} subagente(s) em: $DEST"
+echo ""
+for f in "${FILES[@]}"; do
+  name="$(basename "$f")"
+  echo "  - $name"
+  cp "$f" "$DEST/"
+done
+
+echo ""
+echo "Pronto."
+echo ""
+echo "Para confirmar, rode:"
+echo "  claude plugin validate $DEST"
+echo ""
+echo "Dentro de uma sessão do Claude Code, invoque um subagente pedindo"
+echo "diretamente, ex: \"use o subagente arquiteto-de-software para...\""
+echo "ou @-mencione (digite @ e escolha na lista)."
+
+if [[ "$SCOPE" == "global" ]]; then
+  echo ""
+  echo "Instalado no nível pessoal: disponível em todos os projetos desta"
+  echo "máquina a partir de agora. Você não precisa rodar este script de novo."
+else
+  echo ""
+  echo "Instalado só neste projeto. Para compartilhar com o time:"
+  echo "  git add .claude/agents && git commit -m \"Add project agents\""
+fi

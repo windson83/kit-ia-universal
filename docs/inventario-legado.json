@@ -1,0 +1,1034 @@
+[
+  {
+    "origem": "agents/architect.md",
+    "bytes": 1260,
+    "sha256": "56fb018aa9d154c7f9c61e3428f97e6cc1c7ebae5e05f11239fc894339497554",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/arquiteto-de-software.skill",
+    "bytes": 2614,
+    "sha256": "c6969cd0e8ab6cfd1fea7b089d2c53835f5e44c5ac65243b78a3d8c52e89c3ff"
+  },
+  {
+    "origem": "agents/arquiteto-de-software.skill!/arquiteto-de-software/SKILL.md",
+    "bytes": 5158,
+    "sha256": "7ab1e99f5ee52bcd68c2818832b0c3bb7437cb59cbcd9506f76a615bd9fc3051",
+    "linhas": 101,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/backend-dev.md",
+    "bytes": 1189,
+    "sha256": "557cc0519c451ab810b1aa3bc4cf6dd995feffdfa8accdbd394f58406ced8cf4",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/ci-cd-specialist.md",
+    "bytes": 1214,
+    "sha256": "2f63d4de388ee9f8449da24db2e407b18e50eca726b23640194fe95805ecbd49",
+    "linhas": 19,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/ci-cd-specialist.skill",
+    "bytes": 2828,
+    "sha256": "027e38cde303b86344bab9c94ad174e9f52d3bdbe346cf9f61ed21f165e85110"
+  },
+  {
+    "origem": "agents/ci-cd-specialist.skill!/ci-cd-specialist/SKILL.md",
+    "bytes": 5924,
+    "sha256": "43c3aa0436059f47af2af8a4cf01815997d4e4685a4ae2e837d6778db6adaab1",
+    "linhas": 140,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip",
+    "bytes": 53977,
+    "sha256": "cbed64403381ba5d3112e9342e297baee09c93f27e1c979305e81d49c0cc92e6"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/arquiteto-de-software.md",
+    "bytes": 26436,
+    "sha256": "5238650a894c82c83c6afa8bc09fbbc1b6345f8f243ae8f6ddffda1244de6fe2",
+    "linhas": 675,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/ci-cd-specialist.md",
+    "bytes": 5790,
+    "sha256": "bae7100e943152f7922740bcb24ed13fc6e67f234e1f9a051b3e3572b3c91cda",
+    "linhas": 132,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/code-reviewer.md",
+    "bytes": 4094,
+    "sha256": "a2562e24d4a20d30fdbb251d015a66745742a3acfa0a2a2a6e0e9b7fd00ff190",
+    "linhas": 92,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/database-admin.md",
+    "bytes": 4859,
+    "sha256": "a3352b30fd79bf31da674aee6f6d6a34841e57f3af75ae6b2d8aae3647cee7eb",
+    "linhas": 89,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/debugger.md",
+    "bytes": 5397,
+    "sha256": "4a749257f7bbaef81578520433b7a0e2ea43fe2bc2ed49b23623827bfdd54193",
+    "linhas": 97,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/devops-engineer.md",
+    "bytes": 4760,
+    "sha256": "304bb299172439e6588d31480c1b0367db011a80a1f3a6e69f72d7acaec1e8cd",
+    "linhas": 73,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/docker-container-specialist.md",
+    "bytes": 5422,
+    "sha256": "e71c5ef87aec71bd69611868f0c1a15c957392af3d5b4485ddf3c2eaa1f45309",
+    "linhas": 104,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/frontend-dev.md",
+    "bytes": 4227,
+    "sha256": "8d8080a0aad4e7ec43647b0861138b24dbaf299adf0d09b34bd307aba90a855f",
+    "linhas": 52,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/frontmd.md",
+    "bytes": 21712,
+    "sha256": "92bd02e7b50be4045b96baa2ca44e1c46fa313f24cdfc60db15c1d73d86a8dfa",
+    "linhas": 646,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/git-workflow-specialist.md",
+    "bytes": 2561,
+    "sha256": "aaf6c818f3f5c8d028f92125b1bddeca984b6db566c987f4d7e5f77b405014bc",
+    "linhas": 50,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/infra-security-specialist.md",
+    "bytes": 3980,
+    "sha256": "00298fa41ebfa283b41520ace3e9acf6daeaaa5f14d3ec73c4db1586c2816bfd",
+    "linhas": 60,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/orquestramd.md",
+    "bytes": 15569,
+    "sha256": "2a3c25e6c27d03c37c58fbd44c8b67be453bdedb0d88f64ce73b36d8a58eabc0",
+    "linhas": 500,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/product-analyst.md",
+    "bytes": 3221,
+    "sha256": "af482fc44004cfcdd53dd676e766abbb9e8994d0ebbd4dde630dcac23a68259a",
+    "linhas": 50,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/qa-tester.md",
+    "bytes": 2788,
+    "sha256": "d698252eea506113d2c1a7c0de96241e7b3f8df3d71022fff44920cec8ef897f",
+    "linhas": 59,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/security-auditor.md",
+    "bytes": 3844,
+    "sha256": "f64bc659f776f64973896a9d8c8924f826b07b6628f6524e2777fd787bbdb716",
+    "linhas": 57,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/tech-writer.md",
+    "bytes": 2848,
+    "sha256": "11dc695999ad07549e41379a32f6b87df3aa34b5a2ad1112a40dd98c84453b22",
+    "linhas": 62,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/claude-code-agents.zip!/ui-design-specialist.md",
+    "bytes": 3238,
+    "sha256": "127548412f99e4565614c795b0b7e09b43d23b730d45d7bb84be1b6953961cd2",
+    "linhas": 45,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/code-reviewer.md",
+    "bytes": 855,
+    "sha256": "6599088964c1e0733b66466d08aad7396e6453d28c6a87380deed7afbb768571",
+    "linhas": 19,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/code-reviewer.skill",
+    "bytes": 2165,
+    "sha256": "a48e1718e969f9c4abfb0e982c9ee9b74157dd4ee1b3c606f831f0c800316e25"
+  },
+  {
+    "origem": "agents/code-reviewer.skill!/code-reviewer/SKILL.md",
+    "bytes": 4209,
+    "sha256": "f8e93ed3eae80d6db6a337a9ad8efdee1101e4e76d1eb041196bc3fef375c62f",
+    "linhas": 100,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/database-admin.md",
+    "bytes": 1066,
+    "sha256": "2b0cb05894d76af65a8659250e1e778aff6fbd878b8f0e4bd70d0ce575612fed",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/database-admin.skill",
+    "bytes": 2540,
+    "sha256": "5241a467036f6bd6efd753d3b5dd34faa8c2abfbb02fda395c73be9a96f80e95"
+  },
+  {
+    "origem": "agents/database-admin.skill!/database-admin/SKILL.md",
+    "bytes": 4981,
+    "sha256": "1b10d9b09fc0e4ed728a6f995446cf4fdc62d7cc13dfdc4477bfd42b93932895",
+    "linhas": 97,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/debugger.md",
+    "bytes": 905,
+    "sha256": "110ebacc6d41ec1b69f845837761f5dfdacf0ba5da2f46c330841e94c1d20059",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/debugger.skill",
+    "bytes": 2148,
+    "sha256": "af1fd6a8dca00a0f97f528b1d58c17fb2d83f4b5868ffd43e2edc8f98cd331b3"
+  },
+  {
+    "origem": "agents/debugger.skill!/debugger/SKILL.md",
+    "bytes": 5520,
+    "sha256": "fc16768eb75685ca63ab83b57698f2bf5039d9594548b298be9064195b34e90b",
+    "linhas": 105,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/desenvolvedor-back-end.skill",
+    "bytes": 2128,
+    "sha256": "470602c56f644a3edbdd95a2da377bfec506649959810c7fe340949414dc3c12"
+  },
+  {
+    "origem": "agents/desenvolvedor-back-end.skill!/desenvolvedor-back-end/SKILL.md",
+    "bytes": 3988,
+    "sha256": "faf861236d379295458c4e8552d4d37cbac2d2a858b84ab73ca3b5bdb7b13c32",
+    "linhas": 44,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/devops-engineer.md",
+    "bytes": 1053,
+    "sha256": "f8099bbc185a27e266125c414be11a0e8dfde8ab769f3afa6e073c4c7b697ea4",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/devops-engineer.skill",
+    "bytes": 2310,
+    "sha256": "517004d946ce611e19cfbe88e252c10e894f4fd071c446cfe7f7a0d46b7fd96a"
+  },
+  {
+    "origem": "agents/devops-engineer.skill!/devops-engineer/SKILL.md",
+    "bytes": 4888,
+    "sha256": "7ad4cce0ea989d15f05213c2b32f42dad7dbdde307e4f5a92fbf755e380a0d2d",
+    "linhas": 81,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/docker-container-specialist.md",
+    "bytes": 1311,
+    "sha256": "105902df5ea4d19bb460bc5869da8d2de65f870f8c9b9e22c7194979ccb3b3e7",
+    "linhas": 19,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/docker-container-specialist.skill",
+    "bytes": 2707,
+    "sha256": "c558b5b5070b51502c4195bb7d2f5a791c970b4d0c06410e5aa8d12ecbfb8f32"
+  },
+  {
+    "origem": "agents/docker-container-specialist.skill!/docker-container-specialist/SKILL.md",
+    "bytes": 5570,
+    "sha256": "b8a0717945397de66f78c39c4722278880e1212e36a459aa30cbcd38aae137e7",
+    "linhas": 112,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/frontend-design_Lovable.md",
+    "bytes": 21759,
+    "sha256": "cb4f676bfb9cb808892e2a6cdf0de040ebd28f40452ebc5e05e84fb5c63b9923",
+    "linhas": 662,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/frontend-dev.md",
+    "bytes": 1018,
+    "sha256": "30198e9ca0e4ab17bcac2a4f948fa5f1fdd818a773ac8a015ba310015ad0456d",
+    "linhas": 17,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/frontend-dev.skill",
+    "bytes": 2158,
+    "sha256": "8ff4f4dc200954914e14e1b801683bce45ea376acfb29cf2a1792ae262af3ce1"
+  },
+  {
+    "origem": "agents/frontend-dev.skill!/frontend-dev/SKILL.md",
+    "bytes": 4247,
+    "sha256": "7132f083dec7d7acdc3cf2e711760f08c6f231b6de6dc579f438f00bb02590df",
+    "linhas": 53,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/frontmd.skill",
+    "bytes": 9278,
+    "sha256": "7e890b41b9c0544d8580db0987cf10c897008373f44fafd8eaf6b9c7a25a15ce"
+  },
+  {
+    "origem": "agents/frontmd.skill!/frontmd/SKILL.md",
+    "bytes": 22126,
+    "sha256": "677f53236e5978b6f1f3ba9c8f37d06fc7f684b41f08812b3ba627c4c9473eb7",
+    "linhas": 652,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/git-workflow-specialist.md",
+    "bytes": 1336,
+    "sha256": "44c52a820d75ed256f8ba4036374e707f1b9bc1cd0a1e77bebf52afaa63b6ac1",
+    "linhas": 17,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/git-workflow-specialist.skill",
+    "bytes": 1475,
+    "sha256": "ac5d8c5074c8e29a14a7fabe9c60e4bd7d262b4367950a9ecaf4044dc0a5af73"
+  },
+  {
+    "origem": "agents/git-workflow-specialist.skill!/git-workflow-specialist/SKILL.md",
+    "bytes": 2581,
+    "sha256": "9aafddcc97eb0357621e2c3988b745fa1c8112d8368866766409c8e7574ef6eb",
+    "linhas": 51,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/infra-security-specialist.md",
+    "bytes": 1530,
+    "sha256": "93ae5aa248322cccf779eeb7f8e76262a28d7c12b74b2c03f72850ce444aef35",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/infra-security-specialist.skill",
+    "bytes": 1959,
+    "sha256": "80cc45392ffb4d644b88b6bb91f76420cec14b0ef571a1a477b8cbabea9e3383"
+  },
+  {
+    "origem": "agents/infra-security-specialist.skill!/infra-security-specialist/SKILL.md",
+    "bytes": 4000,
+    "sha256": "4f0fa53864f60cef17a7af06eafeec9d1ff7d8e35df9fc3c5df2c8ff108d9b7c",
+    "linhas": 61,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/OrquestraMD.md",
+    "bytes": 15757,
+    "sha256": "c5b09f3966ffb6fd80306336f97eebca1a2e62c40e8fce4f06f85bc4bc0a34ef",
+    "linhas": 506,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/orquestramd.skill",
+    "bytes": 6466,
+    "sha256": "c306ede706fa8e9e02c0286feadb9532f7d34bbd78bd76f8eda00f898d45f343"
+  },
+  {
+    "origem": "agents/orquestramd.skill!/orquestramd/SKILL.md",
+    "bytes": 15968,
+    "sha256": "adc4e600bbb992513b7a3f12a6f397303842c00dcfe09779e021d8aad57efd93",
+    "linhas": 506,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/product-analyst.md",
+    "bytes": 1203,
+    "sha256": "6511c3b45724a170a3336aa18d871166a756a1cb5027a0ebb4370c4bb6167f31",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/product-analyst.skill",
+    "bytes": 1693,
+    "sha256": "a7d1d9937592e4836a24d85dbe217f7bbafeab1309629a8b5d99c7285eff9d66"
+  },
+  {
+    "origem": "agents/product-analyst.skill!/product-analyst/SKILL.md",
+    "bytes": 3241,
+    "sha256": "44355522c926eaed3bc6fcd7afd90f166fe18d6c742161654c6608231779f88c",
+    "linhas": 51,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/qa-tester.md",
+    "bytes": 1056,
+    "sha256": "5d331bbf9376093a034675aacb9fe722f47a62fb92b465a1674b00ce88ac642b",
+    "linhas": 17,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/qa-tester.skill",
+    "bytes": 1536,
+    "sha256": "66fc55e83af8bdbec4ba4462c716a1d11afcae8733d848dc1b3bffa4a43ced23"
+  },
+  {
+    "origem": "agents/qa-tester.skill!/qa-tester/SKILL.md",
+    "bytes": 2808,
+    "sha256": "0d1abbf18f959d6bf3009783c2d52dca27ce77d8396fe0a1fbee46c251349632",
+    "linhas": 60,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/security-auditor.md",
+    "bytes": 1107,
+    "sha256": "848f7a346481212641f0bcb6aee5eb01569fb8895f328f6ecce9fa9a2356a195",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/security-auditor.skill",
+    "bytes": 1921,
+    "sha256": "4ac3f68710049cc51993157181544eb3bfde2aee30210868089cbfbdb4431829"
+  },
+  {
+    "origem": "agents/security-auditor.skill!/security-auditor/SKILL.md",
+    "bytes": 3864,
+    "sha256": "61da560d4db16cb418e76a2aa0d607db2e3aee67158a140e6e2be168d79c8f92",
+    "linhas": 58,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/tech-writer.md",
+    "bytes": 1080,
+    "sha256": "45af48e4b7c3e5dd62d433768fc5e0e03935231c4d5b1d53fd9af925d2f621be",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/tech-writer.skill",
+    "bytes": 1498,
+    "sha256": "019a1082cdf84d0e64fd4f2eeacc0ceff2459a48c9cb45999f0b138fc24194f2"
+  },
+  {
+    "origem": "agents/tech-writer.skill!/tech-writer/SKILL.md",
+    "bytes": 2868,
+    "sha256": "fa53f21c4712ad2de78b7b9ba92cef24d2b28034377fd65d41ad8b3eba1456df",
+    "linhas": 63,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/ui-design-specialist.md",
+    "bytes": 1543,
+    "sha256": "f9bdb1028c1bd85d5c1ac97acb6e37e69bbf5b9cfd38458030e5d589611888c8",
+    "linhas": 20,
+    "tipo": "documento"
+  },
+  {
+    "origem": "agents/ui-design-specialist.skill",
+    "bytes": 1590,
+    "sha256": "2626b64f275dbd004fc973c35ff243618d4799090b8a8ba05ed34f0aebff17f1"
+  },
+  {
+    "origem": "agents/ui-design-specialist.skill!/ui-design-specialist/SKILL.md",
+    "bytes": 3074,
+    "sha256": "efb8b9a723188e7e0be5eea471f36250ef669887f1ff3afb4ebd33967975e36a",
+    "linhas": 45,
+    "tipo": "documento"
+  },
+  {
+    "origem": "arquiteto-de-software-v2.zip",
+    "bytes": 14187,
+    "sha256": "91067eaf786eadfbb70a73b5223dc0e1ad9c5b6edf6847b06883fbcdbf46ede9"
+  },
+  {
+    "origem": "arquiteto-de-software-v2.zip!/arquiteto-de-software-v2/references/production-readiness.md",
+    "bytes": 3919,
+    "sha256": "37a52193998bb25a07b63fd19e9b7f0af3d0caf733fc7951133c012cf5736585",
+    "linhas": 107,
+    "tipo": "documento"
+  },
+  {
+    "origem": "arquiteto-de-software-v2.zip!/arquiteto-de-software-v2/references/c4-guidelines.md",
+    "bytes": 2493,
+    "sha256": "828b26ad0d32aaa21dfd787053bb66ffdf2e6e72a41737f9052babb023f4cb43",
+    "linhas": 53,
+    "tipo": "documento"
+  },
+  {
+    "origem": "arquiteto-de-software-v2.zip!/arquiteto-de-software-v2/references/quality-attributes.md",
+    "bytes": 2162,
+    "sha256": "f0df9ddde1815c8c1e61e6d5cd3d8f877a9dbe297c3ff45dede984602c0b2867",
+    "linhas": 60,
+    "tipo": "documento"
+  },
+  {
+    "origem": "arquiteto-de-software-v2.zip!/arquiteto-de-software-v2/references/architecture-review.md",
+    "bytes": 1970,
+    "sha256": "2698e721a3b1bb45e9a2c109f7face9093753815d02689377300aa4706b8228d",
+    "linhas": 57,
+    "tipo": "documento"
+  },
+  {
+    "origem": "arquiteto-de-software-v2.zip!/arquiteto-de-software-v2/references/api-contract-checklist.md",
+    "bytes": 1817,
+    "sha256": "365bdce61a234ed7e9746d69d79dc9c67229960b2641fbfe88be471025c1fb41",
+    "linhas": 54,
+    "tipo": "documento"
+  },
+  {
+    "origem": "arquiteto-de-software-v2.zip!/arquiteto-de-software-v2/references/adr-template.md",
+    "bytes": 3441,
+    "sha256": "0b47a2c9ebd284df0522dd7a5289622365b2d35f9194abfd0dc17516a0b6a6a3",
+    "linhas": 115,
+    "tipo": "documento"
+  },
+  {
+    "origem": "arquiteto-de-software-v2.zip!/arquiteto-de-software-v2/SKILL.md",
+    "bytes": 10646,
+    "sha256": "db5baba2f0a6a5c247fc8ecb326180887dce1801802448204349f6a00d740da3",
+    "linhas": 236,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-especialistas-pacote2.zip",
+    "bytes": 7786,
+    "sha256": "8daa9ad71611f261331cb08d20e7fa2e19189f107a75fdb8a16e8fd49ce48a63"
+  },
+  {
+    "origem": "claude-code-especialistas-pacote2.zip!/README.md",
+    "bytes": 5496,
+    "sha256": "74c12632671c31081fb6c7922fd6449be2109cfc6697fa545b919f66d93a3288",
+    "linhas": 51,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-especialistas-pacote2.zip!/agents/docker-container-specialist.md",
+    "bytes": 1311,
+    "sha256": "105902df5ea4d19bb460bc5869da8d2de65f870f8c9b9e22c7194979ccb3b3e7",
+    "linhas": 19,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-especialistas-pacote2.zip!/agents/ui-design-specialist.md",
+    "bytes": 1543,
+    "sha256": "f9bdb1028c1bd85d5c1ac97acb6e37e69bbf5b9cfd38458030e5d589611888c8",
+    "linhas": 20,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-especialistas-pacote2.zip!/agents/git-workflow-specialist.md",
+    "bytes": 1336,
+    "sha256": "44c52a820d75ed256f8ba4036374e707f1b9bc1cd0a1e77bebf52afaa63b6ac1",
+    "linhas": 17,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-especialistas-pacote2.zip!/agents/ci-cd-specialist.md",
+    "bytes": 1214,
+    "sha256": "2f63d4de388ee9f8449da24db2e407b18e50eca726b23640194fe95805ecbd49",
+    "linhas": 19,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-especialistas-pacote2.zip!/agents/infra-security-specialist.md",
+    "bytes": 1530,
+    "sha256": "93ae5aa248322cccf779eeb7f8e76262a28d7c12b74b2c03f72850ce444aef35",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip",
+    "bytes": 11694,
+    "sha256": "4ddff6e09bf53a6747eebff005892f3de9f0a5ccd9d9c077c4d604039bfa934c"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/README.md",
+    "bytes": 5608,
+    "sha256": "8ec7ccf12a327d9b46a08350a76a4da6538dd8190e27be248917f1c511675013",
+    "linhas": 93,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/devops-engineer.md",
+    "bytes": 1053,
+    "sha256": "f8099bbc185a27e266125c414be11a0e8dfde8ab769f3afa6e073c4c7b697ea4",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/architect.md",
+    "bytes": 1260,
+    "sha256": "56fb018aa9d154c7f9c61e3428f97e6cc1c7ebae5e05f11239fc894339497554",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/product-analyst.md",
+    "bytes": 1203,
+    "sha256": "6511c3b45724a170a3336aa18d871166a756a1cb5027a0ebb4370c4bb6167f31",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/frontend-dev.md",
+    "bytes": 1018,
+    "sha256": "30198e9ca0e4ab17bcac2a4f948fa5f1fdd818a773ac8a015ba310015ad0456d",
+    "linhas": 17,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/security-auditor.md",
+    "bytes": 1107,
+    "sha256": "848f7a346481212641f0bcb6aee5eb01569fb8895f328f6ecce9fa9a2356a195",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/qa-tester.md",
+    "bytes": 1056,
+    "sha256": "5d331bbf9376093a034675aacb9fe722f47a62fb92b465a1674b00ce88ac642b",
+    "linhas": 17,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/debugger.md",
+    "bytes": 905,
+    "sha256": "110ebacc6d41ec1b69f845837761f5dfdacf0ba5da2f46c330841e94c1d20059",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/backend-dev.md",
+    "bytes": 1189,
+    "sha256": "557cc0519c451ab810b1aa3bc4cf6dd995feffdfa8accdbd394f58406ced8cf4",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/tech-writer.md",
+    "bytes": 1080,
+    "sha256": "45af48e4b7c3e5dd62d433768fc5e0e03935231c4d5b1d53fd9af925d2f621be",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/database-admin.md",
+    "bytes": 1066,
+    "sha256": "2b0cb05894d76af65a8659250e1e778aff6fbd878b8f0e4bd70d0ce575612fed",
+    "linhas": 18,
+    "tipo": "documento"
+  },
+  {
+    "origem": "claude-code-time-completo.zip!/agents/code-reviewer.md",
+    "bytes": 855,
+    "sha256": "6599088964c1e0733b66466d08aad7396e6453d28c6a87380deed7afbb768571",
+    "linhas": 19,
+    "tipo": "documento"
+  },
+  {
+    "origem": "contratos-publicos-analise.md",
+    "bytes": 8181,
+    "sha256": "028fd7b55656497a60dfaaca5dad373cf4021bfdbd9b2fcda308478a4f9ec14b",
+    "linhas": 134,
+    "tipo": "documento"
+  },
+  {
+    "origem": "contratos-publicos-analise.skill",
+    "bytes": 15211,
+    "sha256": "b82d17fc1e20efcc9f4baf13dd8de76dbaf218df27d01e1923864078b8ab6790"
+  },
+  {
+    "origem": "contratos-publicos-analise.skill!/contratos-publicos-analise/SKILL.md",
+    "bytes": 12426,
+    "sha256": "57afc129fa41603d14669a79e319d3809a15a9bec0a722460cdafb16b9ac604c",
+    "linhas": 219,
+    "tipo": "documento"
+  },
+  {
+    "origem": "contratos-publicos-analise.skill!/contratos-publicos-analise/references/checklists.md",
+    "bytes": 4442,
+    "sha256": "c1502d8ab0df9a2396c1713793d453d1a4eb940bc3b7045b568008e9020ab60c",
+    "linhas": 69,
+    "tipo": "documento"
+  },
+  {
+    "origem": "contratos-publicos-analise.skill!/contratos-publicos-analise/references/legislacao.md",
+    "bytes": 11471,
+    "sha256": "73870d5848d0074a682f729a543075a582f372009f0e662c7c5af735c9e9d9b8",
+    "linhas": 109,
+    "tipo": "documento"
+  },
+  {
+    "origem": "contratos-publicos-analise.skill!/contratos-publicos-analise/references/modelos-de-documentos.md",
+    "bytes": 5267,
+    "sha256": "1948b115915e65cf40803d717ca80822fca238e684dc47ac5b116eb414f61e49",
+    "linhas": 90,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip",
+    "bytes": 50969,
+    "sha256": "c0958694ec74efc3d8de39e76794b563910eab7a7e846eda39beede9f8ee0b82"
+  },
+  {
+    "origem": "files.zip!/INSTALACAO-SKILLS.md",
+    "bytes": 8973,
+    "sha256": "2bedc049c5821c8ea18b75542f0e287b12cd3e2a5776c7dfc29748f83ba43b7f",
+    "linhas": 190,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip",
+    "bytes": 46411,
+    "sha256": "86dfb59d3a03135872a36dae7ec16925e9d416d1838eb5cb1c0dc9d049284924"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/arquiteto-de-software.md",
+    "bytes": 5035,
+    "sha256": "d9ca8d120b43c4630ee8fb26e48f2a65c67f863df6a944fd9ab9cc5e4cfc96e1",
+    "linhas": 93,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/ci-cd-specialist.md",
+    "bytes": 5790,
+    "sha256": "bae7100e943152f7922740bcb24ed13fc6e67f234e1f9a051b3e3572b3c91cda",
+    "linhas": 132,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/code-reviewer.md",
+    "bytes": 4094,
+    "sha256": "a2562e24d4a20d30fdbb251d015a66745742a3acfa0a2a2a6e0e9b7fd00ff190",
+    "linhas": 92,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/database-admin.md",
+    "bytes": 4859,
+    "sha256": "a3352b30fd79bf31da674aee6f6d6a34841e57f3af75ae6b2d8aae3647cee7eb",
+    "linhas": 89,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/debugger.md",
+    "bytes": 5397,
+    "sha256": "4a749257f7bbaef81578520433b7a0e2ea43fe2bc2ed49b23623827bfdd54193",
+    "linhas": 97,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/devops-engineer.md",
+    "bytes": 4760,
+    "sha256": "304bb299172439e6588d31480c1b0367db011a80a1f3a6e69f72d7acaec1e8cd",
+    "linhas": 73,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/docker-container-specialist.md",
+    "bytes": 5422,
+    "sha256": "e71c5ef87aec71bd69611868f0c1a15c957392af3d5b4485ddf3c2eaa1f45309",
+    "linhas": 104,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/frontend-dev.md",
+    "bytes": 4227,
+    "sha256": "8d8080a0aad4e7ec43647b0861138b24dbaf299adf0d09b34bd307aba90a855f",
+    "linhas": 52,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/frontmd.md",
+    "bytes": 21712,
+    "sha256": "92bd02e7b50be4045b96baa2ca44e1c46fa313f24cdfc60db15c1d73d86a8dfa",
+    "linhas": 646,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/git-workflow-specialist.md",
+    "bytes": 2561,
+    "sha256": "aaf6c818f3f5c8d028f92125b1bddeca984b6db566c987f4d7e5f77b405014bc",
+    "linhas": 50,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/infra-security-specialist.md",
+    "bytes": 3980,
+    "sha256": "00298fa41ebfa283b41520ace3e9acf6daeaaa5f14d3ec73c4db1586c2816bfd",
+    "linhas": 60,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/orquestramd.md",
+    "bytes": 15569,
+    "sha256": "2a3c25e6c27d03c37c58fbd44c8b67be453bdedb0d88f64ce73b36d8a58eabc0",
+    "linhas": 500,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/product-analyst.md",
+    "bytes": 3221,
+    "sha256": "af482fc44004cfcdd53dd676e766abbb9e8994d0ebbd4dde630dcac23a68259a",
+    "linhas": 50,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/qa-tester.md",
+    "bytes": 2788,
+    "sha256": "d698252eea506113d2c1a7c0de96241e7b3f8df3d71022fff44920cec8ef897f",
+    "linhas": 59,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/security-auditor.md",
+    "bytes": 3844,
+    "sha256": "f64bc659f776f64973896a9d8c8924f826b07b6628f6524e2777fd787bbdb716",
+    "linhas": 57,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/tech-writer.md",
+    "bytes": 2848,
+    "sha256": "11dc695999ad07549e41379a32f6b87df3aa34b5a2ad1112a40dd98c84453b22",
+    "linhas": 62,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/claude-code-agents.zip!/ui-design-specialist.md",
+    "bytes": 3238,
+    "sha256": "127548412f99e4565614c795b0b7e09b43d23b730d45d7bb84be1b6953961cd2",
+    "linhas": 45,
+    "tipo": "documento"
+  },
+  {
+    "origem": "files.zip!/install-agents.sh",
+    "bytes": 2685,
+    "sha256": "c103f77675364ba55cd6899be1469d32381309cad2f2b15f30e1667ebc8b33e7",
+    "linhas": 98,
+    "tipo": "script"
+  },
+  {
+    "origem": "files.zip!/install-skills.sh",
+    "bytes": 2284,
+    "sha256": "cb1e66bed92f1bbe868d8edd1bb8895139cabbf110f484e7098cdabe190fb15c",
+    "linhas": 88,
+    "tipo": "script"
+  },
+  {
+    "origem": "frontmd-skill-v1.0.0.zip",
+    "bytes": 21201,
+    "sha256": "b56d1fc36767e9fcb0f92ac1375f64b3046688fd812c2dacf6386e6deccd997c"
+  },
+  {
+    "origem": "frontmd-skill-v1.0.0.zip!/frontmd/scripts/validate_skill.py",
+    "bytes": 2296,
+    "sha256": "1c83cedeb3f9bff2a180f25bed6268ada55c997c4344d8e263171648b110674b",
+    "linhas": 71,
+    "tipo": "script"
+  },
+  {
+    "origem": "frontmd-skill-v1.0.0.zip!/frontmd/references/stack-selection.md",
+    "bytes": 5727,
+    "sha256": "ab064385a67936b04fffea7500411cd3c31f5c0e137e82718f69430fdb5522e5",
+    "linhas": 245,
+    "tipo": "documento"
+  },
+  {
+    "origem": "frontmd-skill-v1.0.0.zip!/frontmd/references/validation.md",
+    "bytes": 3631,
+    "sha256": "74fb70ad0e7467fae257b338a1fc4b32fa214b4e58593a6799c17b7704b547fa",
+    "linhas": 155,
+    "tipo": "documento"
+  },
+  {
+    "origem": "frontmd-skill-v1.0.0.zip!/frontmd/references/anti-ai-aesthetic.md",
+    "bytes": 4742,
+    "sha256": "782580210d666d37fa29cd96e660308f89f7bb778743b7a5e0005543bd4f6686",
+    "linhas": 170,
+    "tipo": "documento"
+  },
+  {
+    "origem": "frontmd-skill-v1.0.0.zip!/frontmd/references/source-survey.md",
+    "bytes": 5030,
+    "sha256": "2cb9204362035c7e253d3b9b16a95c7522eb0ed290e71157779d779dae2022fd",
+    "linhas": 114,
+    "tipo": "documento"
+  },
+  {
+    "origem": "frontmd-skill-v1.0.0.zip!/frontmd/SKILL.md",
+    "bytes": 21759,
+    "sha256": "cb4f676bfb9cb808892e2a6cdf0de040ebd28f40452ebc5e05e84fb5c63b9923",
+    "linhas": 662,
+    "tipo": "documento"
+  },
+  {
+    "origem": "frontmd-skill-v1.0.0.zip!/frontmd/README.md",
+    "bytes": 1207,
+    "sha256": "dad08a1c30b8bd1187158fa2661900dc414ce4ad83197b673041d20152875416",
+    "linhas": 40,
+    "tipo": "documento"
+  },
+  {
+    "origem": "orquestramd-skill-v1.1.0.zip",
+    "bytes": 13817,
+    "sha256": "bffac2bea396189b7df75c8d1b2241956042af22b8ab0def91e3d57cbdfe9db0"
+  },
+  {
+    "origem": "orquestramd-skill-v1.1.0.zip!/orquestramd/scripts/validate_skill.py",
+    "bytes": 1916,
+    "sha256": "23cb04c97024e8f89d3a59c3acfe6591463140b0ba5ea7abe27981080e6af072",
+    "linhas": 67,
+    "tipo": "script"
+  },
+  {
+    "origem": "orquestramd-skill-v1.1.0.zip!/orquestramd/references/workflow-patterns.md",
+    "bytes": 3066,
+    "sha256": "dc5968d21dcc96faf131931a4c4d5acc906f7451ab734c1977b2dfc3b8a07448",
+    "linhas": 132,
+    "tipo": "documento"
+  },
+  {
+    "origem": "orquestramd-skill-v1.1.0.zip!/orquestramd/references/delegation-contract.md",
+    "bytes": 1682,
+    "sha256": "fb31f0f4a7138c4762326ee121ad512fba0d0c45572eae7d0b1210851ac20a4e",
+    "linhas": 58,
+    "tipo": "documento"
+  },
+  {
+    "origem": "orquestramd-skill-v1.1.0.zip!/orquestramd/references/capability-discovery.md",
+    "bytes": 3735,
+    "sha256": "db34f22c1066a37235401601a20f63b5a880ce3588c548f7b11d4ff47b60bb57",
+    "linhas": 159,
+    "tipo": "documento"
+  },
+  {
+    "origem": "orquestramd-skill-v1.1.0.zip!/orquestramd/SKILL.md",
+    "bytes": 15757,
+    "sha256": "c5b09f3966ffb6fd80306336f97eebca1a2e62c40e8fce4f06f85bc4bc0a34ef",
+    "linhas": 506,
+    "tipo": "documento"
+  },
+  {
+    "origem": "orquestramd-skill-v1.1.0.zip!/orquestramd/README.md",
+    "bytes": 2399,
+    "sha256": "ecd3c161cd2e07a3d8cb22a5c05527572d0c6af393803b17d90ab091739b4cbf",
+    "linhas": 94,
+    "tipo": "documento"
+  },
+  {
+    "origem": "README.md",
+    "bytes": 5608,
+    "sha256": "8ec7ccf12a327d9b46a08350a76a4da6538dd8190e27be248917f1c511675013",
+    "linhas": 93,
+    "tipo": "documento"
+  },
+  {
+    "origem": "README2.md",
+    "bytes": 5496,
+    "sha256": "74c12632671c31081fb6c7922fd6449be2109cfc6697fa545b919f66d93a3288",
+    "linhas": 51,
+    "tipo": "documento"
+  },
+  {
+    "origem": "skill-contratos.zip",
+    "bytes": 30176,
+    "sha256": "72fe3f4bbfbdd0eff044dcc752107c094b75ec03b47f2d2fc2bed1834ea82dc2"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.zip",
+    "bytes": 16001,
+    "sha256": "bb66a319827e8d6de6b063504462861a9a19199fec53c913cdc86dea54cf0309"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.zip!/contratos-publicos-analise/references/checklists.md",
+    "bytes": 4442,
+    "sha256": "c1502d8ab0df9a2396c1713793d453d1a4eb940bc3b7045b568008e9020ab60c",
+    "linhas": 69,
+    "tipo": "documento"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.zip!/contratos-publicos-analise/references/legislacao.md",
+    "bytes": 11471,
+    "sha256": "73870d5848d0074a682f729a543075a582f372009f0e662c7c5af735c9e9d9b8",
+    "linhas": 109,
+    "tipo": "documento"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.zip!/contratos-publicos-analise/references/modelos-de-documentos.md",
+    "bytes": 5267,
+    "sha256": "1948b115915e65cf40803d717ca80822fca238e684dc47ac5b116eb414f61e49",
+    "linhas": 90,
+    "tipo": "documento"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.zip!/contratos-publicos-analise/SKILL.md",
+    "bytes": 12426,
+    "sha256": "57afc129fa41603d14669a79e319d3809a15a9bec0a722460cdafb16b9ac604c",
+    "linhas": 219,
+    "tipo": "documento"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.skill",
+    "bytes": 15211,
+    "sha256": "b82d17fc1e20efcc9f4baf13dd8de76dbaf218df27d01e1923864078b8ab6790"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.skill!/contratos-publicos-analise/SKILL.md",
+    "bytes": 12426,
+    "sha256": "57afc129fa41603d14669a79e319d3809a15a9bec0a722460cdafb16b9ac604c",
+    "linhas": 219,
+    "tipo": "documento"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.skill!/contratos-publicos-analise/references/checklists.md",
+    "bytes": 4442,
+    "sha256": "c1502d8ab0df9a2396c1713793d453d1a4eb940bc3b7045b568008e9020ab60c",
+    "linhas": 69,
+    "tipo": "documento"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.skill!/contratos-publicos-analise/references/legislacao.md",
+    "bytes": 11471,
+    "sha256": "73870d5848d0074a682f729a543075a582f372009f0e662c7c5af735c9e9d9b8",
+    "linhas": 109,
+    "tipo": "documento"
+  },
+  {
+    "origem": "skill-contratos.zip!/contratos-publicos-analise.skill!/contratos-publicos-analise/references/modelos-de-documentos.md",
+    "bytes": 5267,
+    "sha256": "1948b115915e65cf40803d717ca80822fca238e684dc47ac5b116eb414f61e49",
+    "linhas": 90,
+    "tipo": "documento"
+  }
+]

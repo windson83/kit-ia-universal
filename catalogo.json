@@ -1,0 +1,119 @@
+{
+  "versao": "2.1.0",
+  "capacidades": [
+    {
+      "id": "product-analyst",
+      "titulo": "Requisitos de produto",
+      "descricao": "Converte pedidos de produto em requisitos, critérios de aceite e decisões pendentes.",
+      "origem_principal": "agents/product-analyst.skill!/product-analyst/SKILL.md"
+    },
+    {
+      "id": "arquiteto-de-software",
+      "titulo": "Arquitetura de software",
+      "descricao": "Define arquitetura, ADRs, contratos entre componentes e planos de migração.",
+      "origem_principal": "arquiteto-de-software-v2.zip!/arquiteto-de-software-v2/SKILL.md"
+    },
+    {
+      "id": "backend-dev",
+      "titulo": "Desenvolvimento backend",
+      "descricao": "Implementa APIs, regras de negócio, autorização e integrações de servidor.",
+      "origem_principal": "agents/desenvolvedor-back-end.skill!/desenvolvedor-back-end/SKILL.md"
+    },
+    {
+      "id": "database-admin",
+      "titulo": "Dados e migrations",
+      "descricao": "Modela dados e revisa migrations, integridade e consultas lentas.",
+      "origem_principal": "agents/database-admin.skill!/database-admin/SKILL.md"
+    },
+    {
+      "id": "frontend-dev",
+      "titulo": "Desenvolvimento frontend",
+      "descricao": "Implementa interfaces e fluxos acessíveis integrados a APIs e ao design system.",
+      "origem_principal": "agents/frontend-dev.skill!/frontend-dev/SKILL.md"
+    },
+    {
+      "id": "qa-tester",
+      "titulo": "Qualidade e testes",
+      "descricao": "Planeja e executa testes de comportamento e reproduz falhas com evidências.",
+      "origem_principal": "agents/qa-tester.skill!/qa-tester/SKILL.md"
+    },
+    {
+      "id": "security-auditor",
+      "titulo": "Segurança de aplicação",
+      "descricao": "Audita autorização, entradas, sessões, dependências e exposição de dados em aplicações.",
+      "origem_principal": "agents/security-auditor.skill!/security-auditor/SKILL.md"
+    },
+    {
+      "id": "code-reviewer",
+      "titulo": "Revisão de código",
+      "descricao": "Revisa diffs e PRs buscando regressões concretas e riscos de manutenção.",
+      "origem_principal": "agents/code-reviewer.skill!/code-reviewer/SKILL.md"
+    },
+    {
+      "id": "debugger",
+      "titulo": "Diagnóstico e correção",
+      "descricao": "Investiga causa raiz de erros e aplica correções com reprodução e verificação.",
+      "origem_principal": "agents/debugger.skill!/debugger/SKILL.md"
+    },
+    {
+      "id": "devops-engineer",
+      "titulo": "Operação e infraestrutura",
+      "descricao": "Configura infraestrutura e operação, release, observabilidade e recuperação.",
+      "origem_principal": "agents/devops-engineer.skill!/devops-engineer/SKILL.md"
+    },
+    {
+      "id": "ci-cd-specialist",
+      "titulo": "Integração e entrega contínuas",
+      "descricao": "Cria e depura pipelines com permissões mínimas e validação de release.",
+      "origem_principal": "agents/ci-cd-specialist.skill!/ci-cd-specialist/SKILL.md"
+    },
+    {
+      "id": "git-workflow-specialist",
+      "titulo": "Git e colaboração",
+      "descricao": "Organiza commits e PRs e resolve conflitos preservando trabalho local.",
+      "origem_principal": "agents/git-workflow-specialist.skill!/git-workflow-specialist/SKILL.md"
+    },
+    {
+      "id": "docker-container-specialist",
+      "titulo": "Containers",
+      "descricao": "Cria e revisa Dockerfiles e Compose com builds reproduzíveis e operação verificável.",
+      "origem_principal": "agents/docker-container-specialist.skill!/docker-container-specialist/SKILL.md"
+    },
+    {
+      "id": "infra-security-specialist",
+      "titulo": "Segurança de infraestrutura",
+      "descricao": "Audita IAM, rede, pipelines, containers, IaC e recuperação de infraestrutura.",
+      "origem_principal": "agents/infra-security-specialist.skill!/infra-security-specialist/SKILL.md"
+    },
+    {
+      "id": "tech-writer",
+      "titulo": "Documentação técnica",
+      "descricao": "Produz guias de instalação, referência de API e runbooks fiéis à implementação.",
+      "origem_principal": "agents/tech-writer.skill!/tech-writer/SKILL.md"
+    },
+    {
+      "id": "ui-design-specialist",
+      "titulo": "Direção visual e UX",
+      "descricao": "Define direção visual, tokens e fluxos preservando a identidade do produto.",
+      "origem_principal": "agents/ui-design-specialist.skill!/ui-design-specialist/SKILL.md"
+    },
+    {
+      "id": "frontmd",
+      "titulo": "Design e implementação de interfaces",
+      "descricao": "Projeta e implementa interfaces completas com identidade, responsividade e acessibilidade.",
+      "origem_principal": "frontmd-skill-v1.0.0.zip!/frontmd/SKILL.md"
+    },
+    {
+      "id": "orquestramd",
+      "titulo": "Coordenação de trabalho",
+      "descricao": "Coordena tarefas com dependências e capacidades disponíveis, em execução individual ou com agentes.",
+      "origem_principal": "orquestramd-skill-v1.1.0.zip!/orquestramd/SKILL.md"
+    },
+    {
+      "id": "contratos-publicos-analise",
+      "titulo": "Contratações públicas",
+      "descricao": "Analisa e redige documentos de contratações públicas brasileiras com fontes rastreáveis.",
+      "origem_principal": "contratos-publicos-analise.skill!/contratos-publicos-analise/SKILL.md"
+    }
+  ]
+}

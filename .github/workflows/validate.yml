@@ -1,0 +1,30 @@
+name: Validar kit
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ['3.10', '3.14']
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Conferir estrutura e integridade
+        run: python scripts/kit.py validate
+      - name: Testar instalação, atualização e Git
+        run: python -m unittest discover -s tests -v
+      - name: Gerar pacote independente
+        run: python scripts/package.py

@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+node_modules/
+releases/
+*.zip
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.ia-kit-backups/
+.kit-*

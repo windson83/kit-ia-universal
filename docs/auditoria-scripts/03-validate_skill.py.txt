@@ -1,0 +1,73 @@
+# Origem: frontmd-skill-v1.0.0.zip!/frontmd/scripts/validate_skill.py
+
+#!/usr/bin/env python3
+from pathlib import Path
+import re
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+SKILL = ROOT / "SKILL.md"
+
+errors = []
+warnings = []
+
+if not SKILL.exists():
+    errors.append("SKILL.md is missing")
+else:
+    text = SKILL.read_text(encoding="utf-8")
+    m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+    if not m:
+        errors.append("SKILL.md must start with YAML frontmatter delimited by ---")
+    else:
+        fm = m.group(1)
+        name_m = re.search(r"^name:\s*([^\n]+)$", fm, re.M)
+        desc_m = re.search(r"^description:\s*([^\n]+)$", fm, re.M)
+        if not name_m:
+            errors.append("frontmatter.name is required")
+        else:
+            name = name_m.group(1).strip().strip('"\'')
+            if not re.fullmatch(r"[a-z0-9-]{1,64}", name):
+                errors.append("name must be 1-64 chars using lowercase letters, digits, hyphens")
+            if name != ROOT.name:
+                errors.append(f"name '{name}' must match directory '{ROOT.name}'")
+        if not desc_m:
+            errors.append("frontmatter.description is required")
+        else:
+            desc = desc_m.group(1).strip().strip('"\'')
+            if not (1 <= len(desc) <= 1024):
+                errors.append("description must be 1-1024 chars")
+            if "Use when" not in desc:
+                warnings.append("description should clearly state activation trigger using 'Use when'")
+
+required_refs = [
+    "references/stack-selection.md",
+    "references/anti-ai-aesthetic.md",
+    "references/validation.md",
+    "references/source-survey.md",
+]
+for rel in required_refs:
+    if not (ROOT / rel).exists():
+        errors.append(f"missing referenced file: {rel}")
+
+if SKILL.exists():
+    text = SKILL.read_text(encoding="utf-8")
+    for rel in required_refs:
+        if rel not in text:
+            warnings.append(f"SKILL.md does not mention {rel}")
+
+print("FrontMD skill validation")
+print(f"Root: {ROOT}")
+if errors:
+    print("\nERRORS:")
+    for e in errors:
+        print(f"- {e}")
+if warnings:
+    print("\nWARNINGS:")
+    for w in warnings:
+        print(f"- {w}")
+if not errors:
+    print("\nPASS: structure and required metadata are valid.")
+    if not warnings:
+        print("PASS: no validator warnings.")
+
+sys.exit(1 if errors else 0)

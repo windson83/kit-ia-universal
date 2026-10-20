@@ -1,0 +1,188 @@
+from pathlib import Path, PurePosixPath
+import hashlib, io, json, re, zipfile
+
+BASE = Path(__file__).resolve().parent
+OUT = BASE / 'KIT-IA-UNIVERSAL'
+OUT.mkdir(exist_ok=True)
+def write(rel, value):
+    p = OUT / rel
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(value.rstrip() + '\n', encoding='utf-8')
+
+# Inventory includes archives nested inside archives; nothing is executed/extracted to arbitrary paths.
+entries, blobs = [], {}
+def scan(label, data, depth=0):
+    item = {'origem': label, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+    entries.append(item)
+    if label.lower().endswith(('.zip', '.skill')):
+        if depth > 5: raise ValueError('Archive nesting limit')
+        with zipfile.ZipFile(io.BytesIO(data)) as z:
+            for f in z.infolist():
+                if f.is_dir(): continue
+                path = PurePosixPath(f.filename.replace('\\', '/'))
+                if path.is_absolute() or '..' in path.parts or ':' in str(path):
+                    raise ValueError('Unsafe archive member: ' + f.filename)
+                if f.file_size > 20_000_000: raise ValueError('Oversized member')
+                scan(label + '!/' + str(path), z.read(f), depth + 1)
+    else:
+        try:
+            txt = data.decode('utf-8-sig')
+            blobs[label] = txt
+            item['linhas'] = len(txt.splitlines())
+            item['tipo'] = 'script' if label.endswith(('.py','.sh','.ps1')) else 'documento'
+        except UnicodeDecodeError:
+            item['tipo'] = 'binario'
+
+for p in sorted(BASE.iterdir()):
+    if p.name in ('KIT-IA-UNIVERSAL', 'montar_distribuicao.py'): continue
+    if p.is_file(): scan(p.name, p.read_bytes())
+    elif p.name == 'agents':
+        for f in sorted(p.rglob('*')):
+            if f.is_file(): scan(f.relative_to(BASE).as_posix(), f.read_bytes())
+write('docs/inventario-legado.json', json.dumps(entries, ensure_ascii=False, indent=2))
+
+roles = {
+ 'product-analyst': ('Requisitos de produto', 'Converte pedidos de produto em requisitos, critérios de aceite e decisões pendentes.',
+  ['Leia o fluxo atual e identifique público, problema e resultado observável. Separe necessidade de solução sugerida.', 'Defina escopo e exclusões; escreva critérios de aceite com caminho feliz, erro e borda relevantes.', 'Diferencie fatos, premissas reversíveis e decisões bloqueantes. Investigue antes de perguntar; avance nas partes independentes.', 'Priorize por impacto e dependências. Para mudanças pequenas, não force PRD ou histórias extensas.'],
+  'Objetivo, escopo, critérios verificáveis, prioridades e questões que realmente impedem implementação.'),
+ 'arquiteto-de-software': ('Arquitetura de software', 'Define arquitetura, ADRs, contratos entre componentes e planos de migração.',
+  ['Inspecione código, restrições de operação e requisitos antes de escolher stack. Compare alternativas incluindo manter a solução atual.', 'Defina limites dos módulos, fonte da verdade dos dados, fronteiras de confiança e modos de falha.', 'Especifique atributos críticos com metas verificáveis. Justifique complexidade por requisito concreto e custo operacional.', 'Defina contratos antes do trabalho simultâneo dependente: autenticação, payloads, erros, versionamento e idempotência.', 'Registre decisões relevantes em ADR; para migração, detalhe coexistência, backfill, validação, corte e reversão. Não marque proposta como aprovada.'],
+  'Decisão e alternativas, diagrama proporcional ao sistema, contratos, riscos, plano de implementação e validação.'),
+ 'backend-dev': ('Desenvolvimento backend', 'Implementa APIs, regras de negócio, autorização e integrações de servidor.',
+  ['Leia rotas, modelos, contratos e padrões de erros existentes. Preserve compatibilidade pública ou explicite a migração.', 'Valide entradas na fronteira e autorização por recurso e tenant. Não confunda autenticação com autorização.', 'Defina transações, concorrência, unicidade e idempotência nas operações que modificam estado.', 'Nas integrações, estabeleça timeout e cancelamento; limite retries a falhas transitórias e operações seguras. Evite retry em cascata.', 'Use consultas parametrizadas, paginação e logs sem segredos. Teste regra crítica e falhas externas com doubles controlados.'],
+  'Comportamento entregue, contratos alterados, arquivos, testes executados e implicações de migração.'),
+ 'database-admin': ('Dados e migrations', 'Modela dados e revisa migrations, integridade e consultas lentas.',
+  ['Identifique SGBD, versão, volume e padrões reais de consulta. Não proponha índice apenas por intuição.', 'Defina constraints e ownership. Para multi-tenancy, teste isolamento e unicidade no escopo correto.', 'Use expand/contract para alterações incompatíveis; planeje backfill em lotes, locks, compatibilidade e retomada.', 'Diferencie reversão de schema de recuperação de dados; downgrade não recupera automaticamente dado apagado.', 'Compare plano de execução e medições antes/depois em ambiente adequado. Execução destrutiva exige autorização e recuperação verificável.'],
+  'Schema ou migration, impacto de locks, compatibilidade, recuperação e evidência de integridade/desempenho.'),
+ 'frontend-dev': ('Desenvolvimento frontend', 'Implementa interfaces e fluxos acessíveis integrados a APIs e ao design system.',
+  ['Inspecione framework, componentes e gerenciador de pacotes. Preserve o design system e contratos existentes.', 'Modele loading, vazio, sucesso, erro, permissão negada e retomada. Evite estados impossíveis e dados antigos após troca de contexto.', 'Use semântica HTML, rótulos, foco e teclado. Valide navegação e formulários sem mouse.', 'Trate cache, cancelamento e falhas de rede; não armazene segredos no cliente.', 'Verifique fluxos e tamanhos de tela representativos. Declare quando a verificação visual ou browser não estiver disponível.'],
+  'Fluxos implementados, estados, acessibilidade, verificações realizadas e limitações observadas.'),
+ 'qa-tester': ('Qualidade e testes', 'Planeja e executa testes de comportamento e reproduz falhas com evidências.',
+  ['Parta dos critérios de aceite e riscos. Escolha testes unitários, integração ou ponta a ponta pelo comportamento que precisam provar.', 'Registre a linha de base e separe falha preexistente de regressão. Não declare execução quando só inspecionou.', 'Cubra bordas e isolamento relevantes, sem multiplicar testes que espelham a implementação.', 'Controle relógio, aleatoriedade, rede e dados de teste. Use ambiente descartável quando houver gravação.', 'Relate bugs com passos, esperado, observado, ambiente e severidade. Corrija se a tarefa autorizar; em revisão, entregue diagnóstico.'],
+  'Matriz risco/cenário, resultados executados, bugs reproduzíveis e cobertura que permaneceu pendente.'),
+ 'security-auditor': ('Segurança de aplicação', 'Audita autorização, entradas, sessões, dependências e exposição de dados em aplicações.',
+  ['Defina escopo, ativos e fronteiras de confiança. Siga o caminho da entrada até o uso sensível.', 'Verifique autorização por objeto/tenant, sessões, injeção, SSRF, upload e saída contextual contra XSS.', 'Para dependências, confirme versão e advisory oficial; versão antiga isoladamente não prova vulnerabilidade explorável.', 'Demonstre pré-condições e impacto com evidência local. Não exponha segredos nem execute exploração externa sem escopo autorizado.', 'Ordene achados por impacto e probabilidade, com correção e como verificar. Diferencie hipótese de falha confirmada.'],
+  'Achados com arquivo/linha, pré-condição, impacto, evidência, severidade, remediação e lacunas da análise.'),
+ 'code-reviewer': ('Revisão de código', 'Revisa diffs e PRs buscando regressões concretas e riscos de manutenção.',
+  ['Determine o diff/base solicitado e leia contexto e chamadores relevantes, além das linhas modificadas.', 'Priorize correção, compatibilidade, autorização, concorrência e perda de dados. Evite apontar preferências como defeitos.', 'Vincule cada achado a cenário demonstrável e localização precisa; indique correção suficiente sem reescrever o projeto.', 'Use testes direcionados quando ajudarem a comprovar suspeita; distinga inspeção de execução.', 'Se não houver achados acionáveis, diga isso e informe limites da revisão. Não invente defeitos para preencher uma lista.'],
+  'Achados por prioridade, localização e cenário de falha; validações e limitações relevantes.'),
+ 'debugger': ('Diagnóstico e correção', 'Investiga causa raiz de erros e aplica correções com reprodução e verificação.',
+  ['Capture sintoma, versão, ambiente e reprodução mínima. Proteja dados em logs.', 'Formule hipóteses e escolha a observação que as diferencia. Não altere várias causas presumidas de uma vez.', 'Siga o fluxo de dados e a primeira falha relevante, não apenas a última exceção.', 'Aplique correção estreita e teste a regressão quando houver benefício duradouro; não mascare erro com catch vazio.', 'Se não conseguir reproduzir, reporte o que foi eliminado e a menor evidência ainda necessária; não declare causa confirmada.'],
+  'Causa e evidência, correção, reprodução antes/depois e risco restante.'),
+ 'devops-engineer': ('Operação e infraestrutura', 'Configura infraestrutura e operação, release, observabilidade e recuperação.',
+  ['Identifique ambiente, IaC, dependências e limites da autorização. Separe plano, validação local e aplicação no ambiente.', 'Use artefatos reprodutíveis e configuração versionada sem segredos. Documente variáveis obrigatórias.', 'Defina health/readiness, métricas, alertas acionáveis e runbook proporcional ao serviço.', 'Planeje rollout, rollback e compatibilidade de dados; teste restore quando recuperação fizer parte da tarefa.', 'Em incidente, priorize mitigação autorizada com evidência e preserve dados para diagnóstico. Mudança em produção segue autorização do usuário.'],
+  'Plano ou mudança aplicada, ambiente, validação, operação e procedimento de recuperação.'),
+ 'ci-cd-specialist': ('Integração e entrega contínuas', 'Cria e depura pipelines com permissões mínimas e validação de release.',
+  ['Inspecione a plataforma e os gatilhos reais. Use sintaxe e versões verificadas na documentação oficial quando necessário.', 'Separe verificações independentes e dependências de release. Não obrigue uma ordem serial que só aumenta latência.', 'Minimize permissões e não disponibilize segredos em código não confiável de forks/PRs. Revise runners e contexto de execução.', 'Cache deve ter chave coerente com lockfile e runtime; cache não substitui artefato imutável de release.', 'Faça deploy depender dos gates relevantes e ambiente correto. Use timeout, controle de concorrência e credenciais temporárias quando disponíveis.'],
+  'Workflow, gatilhos/permissões, dependências entre jobs, validação e limites do teste local.'),
+ 'git-workflow-specialist': ('Git e colaboração', 'Organiza commits e PRs e resolve conflitos preservando trabalho local.',
+  ['Inspecione status, branch, remoto e diff antes de alterar histórico. Identifique alterações do usuário.', 'Separe alterações por objetivo sem incluir arquivos alheios. Não faça commit, push ou publicação sem escopo autorizado.', 'Resolva conflito pelo comportamento pretendido das duas mudanças e valide integração; não escolha um lado em massa.', 'Não use reset destrutivo, limpeza ou force push como atalho. Se reescrita for autorizada, confira referência e impacto compartilhado.', 'Escreva descrição com problema, comportamento final e validação real. Não atribua teste que não executou.'],
+  'Estado inicial relevante, operação feita, referências afetadas, conflitos resolvidos e verificações.'),
+ 'docker-container-specialist': ('Containers', 'Cria e revisa Dockerfiles e Compose com builds reproduzíveis e operação verificável.',
+  ['Identifique runtime, arquitetura, dependências nativas e requisitos antes de escolher base. Alpine não é escolha obrigatória.', 'Separe build e runtime quando útil; use lockfiles, contexto mínimo e .dockerignore.', 'Não incorpore credenciais em ARG, ENV ou camadas. Use secrets de build/runtime oferecidos pelo ambiente.', 'Configure usuário, sinais de encerramento, filesystem e healthcheck conforme a aplicação; não simule saúde com comando sempre verdadeiro.', 'Valide configuração, build e comportamento quando Docker estiver disponível. depends_on não substitui tolerância a indisponibilidade em runtime.'],
+  'Arquivos, build/configuração verificados, execução, requisitos de runtime e limitações.'),
+ 'infra-security-specialist': ('Segurança de infraestrutura', 'Audita IAM, rede, pipelines, containers, IaC e recuperação de infraestrutura.',
+  ['Mapeie identidades, ambientes e fronteiras. Confira evidência de configuração efetiva quando houver acesso.', 'Avalie privilégios, exposição pública, segredos, estado de IaC, logs e cadeia de artefatos.', 'Considere acesso lateral, escalada via CI e isolamento entre produção e teste. Não conclua exposição apenas por exemplo de configuração.', 'Verifique recuperação por backup/restore quando no escopo. Registre configurações não acessíveis como não verificadas.', 'Proponha mudança mínima e forma de validar; não aplique política crítica no ambiente sem autorização correspondente.'],
+  'Achado, recurso, evidência, caminho de impacto, prioridade, correção e teste de remediação.'),
+ 'tech-writer': ('Documentação técnica', 'Produz guias de instalação, referência de API e runbooks fiéis à implementação.',
+  ['Identifique audiência e tarefa que o documento precisa permitir. Leia código e configuração relevantes.', 'Registre pré-requisitos, comandos a partir de diretório explícito, resultados esperados e erros comuns.', 'Verifique exemplos em ambiente controlado quando possível. Distingua exemplo ilustrativo de comando executado.', 'Documente configuração, dados persistentes, recuperação e limites; use valores fictícios seguros nos exemplos.', 'Mantenha uma fonte da verdade e links relativos válidos. Não invente capacidades para completar uma seção.'],
+  'Documento reutilizável, exemplos verificados, dependências e lacunas factuais.'),
+ 'ui-design-specialist': ('Direção visual e UX', 'Define direção visual, tokens e fluxos preservando a identidade do produto.',
+  ['Inspecione marca, público, tarefas, densidade de informação e componentes existentes.', 'Defina hierarquia, tipografia, cor semântica, espaçamento e foco. Preserve convenções úteis; evite proibir cores/fontes por moda.', 'Descreva fluxo principal e estados vazios, erros, foco e feedback. Priorize legibilidade e tarefa do usuário.', 'Valide contraste e interação por teclado; não declare conformidade WCAG só por aparência.', 'Entregue tokens e decisões implementáveis; diferencie proposta visual de interface realmente testada.'],
+  'Direção, tokens, componentes/estados, justificativas de UX e validação visual/acessível.'),
+ 'frontmd': ('Design e implementação de interfaces', 'Projeta e implementa interfaces completas com identidade, responsividade e acessibilidade.',
+  ['Inspecione framework, design system, rotas e fluxo de maior valor antes de editar. Ajuste profundidade ao pedido.', 'Estabeleça direção visual e tokens sem impor stack ou trocar biblioteca saudável por preferência.', 'Implemente componentes reutilizáveis e estados reais de dados, erro e permissão. Use dependências apenas por necessidade.', 'Avalie teclado, foco, contraste, reduced-motion, mobile e telas densas conforme uso previsto.', 'Faça inspeção visual quando houver ferramenta e teste o fluxo principal; relate explicitamente o que não pôde ser visto ou executado.'],
+  'Interface, direção visual, estados, verificações de build/interação/visual e limitações.'),
+ 'orquestramd': ('Coordenação de trabalho', 'Coordena tarefas com dependências e capacidades disponíveis, em execução individual ou com agentes.',
+  ['Descubra capacidades pelo catálogo do ambiente, lendo primeiro nome e descrição. Não suponha agentes, conectores ou ferramentas instalados.', 'Decomponha só o necessário. Defina entregáveis, dependências e critérios observáveis; tarefa pequena pode ser executada diretamente.', 'Delegue somente se o usuário e as regras do ambiente permitirem. Sem delegação disponível, execute as mesmas frentes sequencialmente.', 'Antes de paralelizar, defina contrato e ownership de arquivos. Informe a cada executor que não está sozinho e que deve preservar mudanças alheias.', 'Integre entregas e valide comportamento; retorno de um agente não é prova de conclusão. Limite retrabalho por evidência e peça dado externo apenas quando indispensável.'],
+  'Objetivo, trabalho concluído, integração e evidências, pendências concretas e próximos passos necessários.'),
+ 'contratos-publicos-analise': ('Contratações públicas', 'Analisa e redige documentos de contratações públicas brasileiras com fontes rastreáveis.',
+  ['Identifique objeto, ente, regime jurídico efetivamente adotado, fase, competência e documentos relevantes; não aplique um regime por mera data.', 'Separe fatos provados, alegações e dados faltantes. Relacione cada conclusão ao contrato/TR/documento e página ou identificador.', 'Verifique legislação, limites monetários e jurisprudência em fontes oficiais atuais antes de fundamentar. Referências locais são apoio, não prova de vigência.', 'Em inadimplemento, diferencie constatação, notificação, defesa, instrução e decisão pela autoridade competente. Não trate alegação como infração já julgada.', 'Entregue minuta proporcional ao pedido. Marque campos desconhecidos e pendências essenciais; não qualifique rascunho incompleto como pronto para assinatura.', 'Sem acesso às normas atuais, entregue análise documental condicionada e indique a verificação pendente. Não invente artigo, prazo, valor, acórdão ou cálculo.'],
+  'Minuta ou análise, alterações relevantes, fundamentação rastreável e pontos pendentes antes do uso oficial.'),
+}
+
+sources = {}
+for name in roles:
+    stem = 'desenvolvedor-back-end' if name == 'backend-dev' else name
+    candidates = [k for k in blobs if k.startswith(f'agents/{stem}.skill!/') and k.endswith('SKILL.md')]
+    if name == 'arquiteto-de-software': candidates = [k for k in blobs if k.startswith('arquiteto-de-software-v2.zip!/') and k.endswith('SKILL.md')]
+    if name == 'frontmd': candidates = [k for k in blobs if k.startswith('frontmd-skill-v1.0.0.zip!/') and k.endswith('SKILL.md')]
+    if name == 'orquestramd': candidates = [k for k in blobs if k.startswith('orquestramd-skill-v1.1.0.zip!/') and k.endswith('SKILL.md')]
+    if name == 'contratos-publicos-analise': candidates = [k for k in blobs if k.startswith('contratos-publicos-analise.skill!/') and k.endswith('SKILL.md')]
+    sources[name] = candidates[0]
+    title, desc, steps, result = roles[name]
+    text = f'---\nname: {name}\ndescription: {json.dumps(desc, ensure_ascii=False)}\n---\n\n# {title}\n\n## Procedimento\n\n'
+    text += '\n'.join(f'{i}. {s}' for i,s in enumerate(steps,1))
+    text += '\n\n## Condições de execução\n\nUse somente ferramentas realmente disponíveis e respeite a autorização e as instruções do ambiente. '
+    text += 'Não simule comandos, consultas ou delegações. Em edição compartilhada, preserve mudanças de outros executores. '
+    text += 'Registre validações realizadas e limitações concretas. Consulta ou sugestão não autoriza publicação ou alteração externa.\n\n## Entrega\n\n' + result
+    prefix = sources[name].rsplit('/',1)[0] + '/'
+    refs = []
+    for origin, body in blobs.items():
+        if origin.startswith(prefix + 'references/'):
+            rel = origin[len(prefix):]
+            # Legal historical claims remain in audit snapshot, not operational references.
+            if name == 'contratos-publicos-analise': continue
+            write(f'skills/{name}/{rel}', body)
+            refs.append(rel)
+    if name == 'contratos-publicos-analise':
+        legal = {
+          'fontes.md': '# Verificação de fontes\n\nConfirme o regime do instrumento e as normas do ente. Consulte o texto vigente no portal oficial (Planalto, legislação estadual/municipal e diário oficial). Para precedentes, use tribunal/órgão de controle e confira processo, data, tese e aderência ao caso. Registre URL, artigo/item e data da consulta. Não reutilize limites monetários de anos anteriores. Não confunda normas gerais com regimes especiais ou contratos legados. Se não houver consulta disponível, indique expressamente que a vigência não foi conferida.',
+          'modelos.md': '# Estruturas de minutas\n\nNotificação: destinatário, instrumento, fatos e evidências, obrigação contratual, solicitação clara, prazo com base verificada e canal de resposta. Não antecipar sanção.\n\nAditivo: identificação, justificativa, competência, fundamento verificado, cláusulas afetadas, efeito econômico e vigência; indicar instrução e aprovações pendentes.\n\nRelatório do fiscal: período, obrigação, método de medição, evidência, resultado, divergências, providências e limitações. Distinguir observação e conclusão.\n\nMarcadores [CAMPO A PREENCHER] devem ser destacados na entrega como pendências, não dados confirmados.',
+          'checklists.md': '# Conferência documental\n\n- Objeto e obrigações identificados com fonte.\n- Competência e regime jurídico confirmados.\n- Fatos, datas, valores e cálculos com evidência.\n- Contraditório e rito aplicável verificados quando houver responsabilização.\n- Documentos faltantes e divergências registrados.\n- Minuta revisada quanto a coerência, dados pessoais e campos incompletos.\n- Atos externos dependem da autorização aplicável; no SEI, prévia e confirmação antes de gravar e nunca assinar automaticamente.'}
+        for fn, body in legal.items():
+            write(f'skills/{name}/references/{fn}', body)
+            refs.append('references/' + fn)
+    if refs:
+        text += '\n\n## Referências sob demanda\n\nLeia somente a referência pertinente ao modo de trabalho:\n\n' + '\n'.join(f'- [{r}]({r})' for r in refs)
+    write(f'skills/{name}/SKILL.md', text)
+    # Preserve the chosen original for audit, outside runtime discovery.
+    write(f'docs/origens/{name}.md', '# Fonte histórica — não é instrução operacional\n\nOrigem: `' + sources[name] + '`\n\n' + blobs[sources[name]])
+
+catalog = [{'id': n, 'titulo': v[0], 'descricao': v[1], 'origem_principal': sources[n]} for n,v in roles.items()]
+write('catalogo.json', json.dumps({'versao':'2.0.0','capacidades':catalog}, ensure_ascii=False, indent=2))
+write('docs/CATALOGO.md', '# Catálogo\n\n| Identificador | Capacidade |\n|---|---|\n' + '\n'.join(f'| {n} | {v[1]} |' for n,v in roles.items()) + '\n\nAliases históricos: `architect` → `arquiteto-de-software`; `desenvolvedor-back-end` → `backend-dev`; `frontend-design_Lovable` → `frontmd`; `OrquestraMD` → `orquestramd`. Evite instalar aliases juntos para não duplicar a descoberta.')
+
+# Retain all original executable scripts as inert audit text, including copies in nested archives.
+scripts = [(k,v) for k,v in blobs.items() if k.endswith(('.sh','.py','.ps1'))]
+for i,(k,v) in enumerate(scripts,1):
+    write(f'docs/auditoria-scripts/{i:02d}-{PurePosixPath(k).name}.txt', '# Origem: ' + k + '\n\n' + v)
+duplicates = {}
+for e in entries: duplicates.setdefault(e['sha256'], []).append(e['origem'])
+write('docs/duplicados.json', json.dumps([v for v in duplicates.values() if len(v)>1], ensure_ascii=False, indent=2))
+write('docs/MAPEAMENTO.md', '# Mapeamento do legado\n\nOs originais permanecem em D:/SKILL; esta distribuição não depende deles para instalar. O inventário registra cada arquivo físico e cada membro de ZIP/.skill, inclusive ZIP dentro de ZIP, com hash SHA-256.\n\n| Capacidade nova | Fonte principal selecionada |\n|---|---|\n' + '\n'.join(f'| {n} | `{p}` |' for n,p in sources.items()) + '\n\nFontes completas selecionadas: `origens/`. Scripts originais: `auditoria-scripts/` (texto inerte). Todas as variantes e duplicatas exatas: `inventario-legado.json` e `duplicados.json`. A seleção priorizou referências completas (arquitetura v2, FrontMD com referências, OrquestraMD v1.1) e normalizou nomes; os entrypoints foram revisados, não apenas copiados.')
+write('docs/AUDITORIA.md', f'''# Auditoria e melhorias — 20/10/2026
+
+## Cobertura
+
+{len(entries)} itens inventariados, incluindo contêineres e membros aninhados; {len(blobs)} documentos/scripts UTF-8 lidos; {len(scripts)} ocorrências de scripts preservadas para revisão. Não executamos scripts do legado nem modificamos os originais. A contagem inclui cópias repetidas, não capacidades distintas.
+
+## Problemas encontrados e tratamento
+
+| Problema observado | Tratamento na distribuição |
+|---|---|
+| Agentes de cerca de 1 KB coexistiam com versões de vários KB em .skill e ZIP | Comparação de fontes e 19 capacidades canônicas com rastreabilidade |
+| ZIP dentro de ZIP e referências ausentes nos .skill isolados | Inventário recursivo e referências completas recuperadas dos pacotes |
+| Nomes architect/arquiteto e backend/desenvolvedor-back-end divergentes | Nomes únicos e aliases documentados |
+| Modelos opus/sonnet/haiku e nomes de ferramentas amarrados ao Claude | Núcleo neutro; adaptador Claude com modelo herdado e catálogo portátil |
+| Dependências de skills inexistentes como write-spec/system-design | Procedimentos autossuficientes; descoberta de capacidade quando necessária |
+| Instalação com cp/unzip sobrescrevia destinos sem checagem | Planejamento, conflito antes de gravação, atualização explícita e backup |
+| Instalador Bash aceitava argumentos desconhecidos e escopos conflitantes | CLI com argumentos tipados e validação de destino |
+| Temporário de unzip sem limpeza confiável e extração sem fronteira | Instalador novo não extrai arquivos arbitrários e não precisa de unzip |
+| Uso de plugin validate para pastas de agentes/skills | Validador específico de estrutura, nomes, referências e integridade |
+| Validadores antigos conferiam versão fixa e palavras no texto | Validação de arquivos/links reais e testes do instalador |
+| FrontMD impunha processo longo e preferência de bibliotecas | Fluxo proporcional e respeito à stack; detalhes em referências sob demanda |
+| Revisão restrita só às linhas novas poderia perder contexto | Leitura de chamadores e cenário concreto de regressão |
+| Separação rígida de QA/debugger parava correções autorizadas | Papel ajustado ao pedido; diagnóstico ou correção conforme escopo |
+| Referência contratual trazia valores anuais e afirmação ampla de regime único | Fonte jurídica precisa ser verificada no caso; tabela histórica removida do material operacional |
+| Alegações sobre terceiros, estrelas de repositórios e limites sem validade garantida | Não replicadas no guia operacional |
+
+## Profundidade das melhorias
+
+As capacidades agora exigem entregas e evidências específicas: isolamento e idempotência no backend; locks e recuperação de dados em migrations; confiança de PRs e permissões no CI; sinais/segredos em containers; contexto em revisão; estados e acessibilidade no frontend; fonte e regime em contratos. Aumentar texto indiscriminadamente não melhora o agente: os detalhes extensos ficam em referências.
+
+## Limites
+
+A auditoria é estática e os testes validam a distribuição e o instalador. Não é certificação do comportamento de um modelo nem teste de acesso ao SEI, serviços externos ou execução de pipelines reais. Referências técnicas recuperadas são material de apoio histórico e devem ser confrontadas com documentação atual quando versões ou recursos importarem. Não foi feita análise jurídica de um caso concreto nem certificação de todas as normas citadas nos originais. Snapshots em origens/ são histórico, não instruções ativas.
+''')
+print(f'Created {len(roles)} capabilities; inventoried {len(entries)} entries, {len(scripts)} script occurrences')

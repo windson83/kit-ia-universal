@@ -1,0 +1,69 @@
+# Origem: orquestramd-skill-v1.1.0.zip!/orquestramd/scripts/validate_skill.py
+
+from pathlib import Path
+import re
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+SKILL = ROOT / "SKILL.md"
+REQUIRED = [
+    ROOT / "README.md",
+    ROOT / "references" / "capability-discovery.md",
+    ROOT / "references" / "delegation-contract.md",
+    ROOT / "references" / "workflow-patterns.md",
+]
+
+
+def fail(msg):
+    print(f"FAIL: {msg}")
+    sys.exit(1)
+
+
+if not SKILL.exists():
+    fail("SKILL.md missing")
+
+text = SKILL.read_text(encoding="utf-8")
+if not text.startswith("---\n"):
+    fail("YAML frontmatter missing")
+if "name: orquestramd" not in text:
+    fail("skill name mismatch")
+if "version: \"1.1.0\"" not in text:
+    fail("expected dynamic-discovery version 1.1.0")
+
+for path in REQUIRED:
+    if not path.exists():
+        fail(f"missing {path.relative_to(ROOT)}")
+
+required_concepts = [
+    r"Dynamic capability discovery|DISCOVER",
+    r"Capability Registry",
+    r"progressive reading|progressive disclosure",
+    r"dependency graph|DAG",
+    r"critical path",
+    r"WAITING_UPSTREAM",
+    r"independent verification",
+    r"Agents versus skills",
+    r"Rework protocol",
+    r"Quality gates",
+    r"smallest sufficient",
+    r"never depend on a permanent list|never.*hardcoded roster",
+]
+for pattern in required_concepts:
+    if not re.search(pattern, text, re.I | re.S):
+        fail(f"required orchestration concept missing: {pattern}")
+
+# Ensure the skill does not regress to a static roster section.
+forbidden = [
+    r"#\s*1\.\s*Specialist roster",
+    r"The current default roster is",
+]
+for pattern in forbidden:
+    if re.search(pattern, text, re.I):
+        fail(f"static roster pattern found: {pattern}")
+
+# Legacy static catalog should not remain.
+legacy = ROOT / "references" / "agent-catalog.md"
+if legacy.exists():
+    fail("legacy static agent-catalog.md still exists")
+
+print("PASS: OrquestraMD v1.1 uses dynamic capability discovery with no fixed specialist roster.")

@@ -1,0 +1,90 @@
+# Origem: files.zip!/install-skills.sh
+
+#!/usr/bin/env bash
+# install-skills.sh — instala os arquivos .skill no Claude Code
+#
+# Uso:
+#   ./install-skills.sh --global [pasta-com-os-.skill]
+#   ./install-skills.sh --project [pasta-com-os-.skill]
+#
+#   --global   instala em ~/.claude/skills (disponível em todos os projetos,
+#              nesta máquina, para sempre — não precisa repetir por projeto)
+#   --project  instala em ./.claude/skills (só no projeto atual; pode
+#              commitar essa pasta pra compartilhar com o time)
+#
+# Se a pasta com os .skill não for informada, usa o diretório onde este
+# script está salvo.
+
+set -euo pipefail
+
+usage() {
+  echo "Uso: $0 [--global|--project] [pasta-com-os-.skill]"
+  echo ""
+  echo "  --global   instala em ~/.claude/skills (todos os projetos desta máquina)"
+  echo "  --project  instala em ./.claude/skills (só o projeto atual, versionável)"
+  exit 1
+}
+
+SCOPE=""
+SRC_DIR=""
+
+for arg in "$@"; do
+  case "$arg" in
+    --global) SCOPE="global" ;;
+    --project) SCOPE="project" ;;
+    -h|--help) usage ;;
+    *) SRC_DIR="$arg" ;;
+  esac
+done
+
+if [[ -z "$SCOPE" ]]; then
+  echo "Erro: informe --global ou --project"
+  echo ""
+  usage
+fi
+
+if [[ -z "$SRC_DIR" ]]; then
+  SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
+
+if [[ "$SCOPE" == "global" ]]; then
+  DEST="$HOME/.claude/skills"
+else
+  DEST="$(pwd)/.claude/skills"
+fi
+
+mkdir -p "$DEST"
+
+shopt -s nullglob
+FILES=("$SRC_DIR"/*.skill)
+if [[ ${#FILES[@]} -eq 0 ]]; then
+  echo "Nenhum arquivo .skill encontrado em: $SRC_DIR"
+  exit 1
+fi
+
+echo "Instalando ${#FILES[@]} skill(s) em: $DEST"
+echo ""
+for f in "${FILES[@]}"; do
+  name="$(basename "$f" .skill)"
+  echo "  - $name"
+  unzip -oq "$f" -d "$DEST"
+done
+
+echo ""
+echo "Pronto."
+echo ""
+echo "Para confirmar, rode:"
+echo "  claude plugin validate $DEST"
+echo ""
+echo "E dentro de uma sessão do Claude Code, digite /skills ou pergunte:"
+echo "  \"What skills are available?\""
+
+if [[ "$SCOPE" == "global" ]]; then
+  echo ""
+  echo "Instalado no nível pessoal: disponível em todos os projetos desta"
+  echo "máquina a partir de agora. Você não precisa rodar este script de novo."
+else
+  echo ""
+  echo "Instalado só neste projeto. Para compartilhar com o time:"
+  echo "  git add .claude/skills && git commit -m \"Add project skills\""
+fi
